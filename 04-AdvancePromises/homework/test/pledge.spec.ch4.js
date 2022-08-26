@@ -44,7 +44,7 @@ describe('por una dada promiseA (pA)', function(){
   // referencia a la promesa de abajo (downstreamPromise)
   // en orden de controlar el chaining
 
-  xit('`.then` agregá una nueva promesa a su handlerGroups', function(){
+  it('`.then` agregá una nueva promesa a su handlerGroups', function(){
     promiseA.then();
     var groups = promiseA._handlerGroups;
     expect( groups[0].downstreamPromise instanceof $Promise ).toBe( true );
@@ -58,7 +58,7 @@ describe('por una dada promiseA (pA)', function(){
   // vas a tener que ir para atras y arreglar `.catch`, tomando este
   // spec en cuenta.
 
-  xit('`.then` devuelve ese downstreamPromise', function(){
+  it('`.then` devuelve ese downstreamPromise', function(){
     var promiseB = promiseA.then();
     expect( promiseB ).toBe( promiseA._handlerGroups[0].downstreamPromise );
   });

@@ -4,61 +4,48 @@ Promises Workshop: construye la libreria de ES6 promises, pledge.js
 ----------------------------------------------------------------*/
 // // TU CÓDIGO AQUÍ:
 
-// class $Promise {
-//   constructor(executor) {
-//     if (typeof executor !== "function")
-//       throw new TypeError("executor no es una function");
-//     this._state = "pending";
-//     this._value;
-//     executor(this._internalResolve.bind(this), this._internalReject.bind(this));
-//   }
-// }
-
-function $Promise(executor) {
-  if (typeof executor !== "function")
-    throw new TypeError("executor no es una function");
-  this._state = "pending";
-  this._value;
-  this._handlerGroups = [];
-  executor(this._internalResolve.bind(this), this._internalReject.bind(this));
+class $Promise {
+  constructor(executor) {
+    if (typeof executor !== "function")
+      throw new TypeError("executor no es una function");
+    this._state = "pending";
+    this._value;
+    this._handlerGroups = [];
+    executor(this._internalResolve.bind(this), this._internalReject.bind(this));
+  }
+  _internalResolve(data) {
+    if (this._state === "pending") {
+      this._value = data;
+      this._state = "fulfilled";
+      this._callHandlers();
+    }
+  }
+  _internalReject(reason) {
+    if (this._state === "pending") {
+      this._value = reason;
+      this._state = "rejected";
+      this._callHandlers();
+    }
+  }
+  then(successCb, errorCb) {
+    if (typeof successCb !== "function") successCb = null;
+    if (typeof errorCb !== "function") errorCb = null;
+    const downstreamPromise = new $Promise(function () {});
+    this._handlerGroups.push({ successCb, errorCb, downstreamPromise });
+    if (this._state !== "pending") this._callHandlers();
+    return downstreamPromise;
+  }
+  _callHandlers() {
+    while (this._handlerGroups.length > 0) {
+      const handle = this._handlerGroups.shift();
+      if (this._state === "fulfilled")
+        handle.successCb && handle.successCb(this._value);
+      if (this._state === "rejected")
+        handle.errorCb && handle.errorCb(this._value);
+    }
+  }
+  catch = (errorCb) => this.then(null, errorCb);
 }
-
-$Promise.prototype._internalResolve = function (data) {
-  if (this._state === "pending") {
-    this._value = data;
-    this._state = "fulfilled";
-    this._callHandlers();
-  }
-};
-
-$Promise.prototype._internalReject = function (reason) {
-  if (this._state === "pending") {
-    this._value = reason;
-    this._state = "rejected";
-    this._callHandlers();
-  }
-};
-
-$Promise.prototype.then = function (successCb, errorCb) {
-  if (typeof successCb !== "function") successCb = null;
-  if (typeof errorCb !== "function") errorCb = null;
-  this._handlerGroups.push({ successCb, errorCb });
-  if (this._state !== "pending") this._callHandlers();
-};
-
-$Promise.prototype._callHandlers = function () {
-  while (this._handlerGroups.length > 0) {
-    const handle = this._handlerGroups.shift();
-    if (this._state === "fulfilled")
-      handle.successCb && handle.successCb(this._value);
-    if (this._state === "rejected")
-      handle.errorCb && handle.errorCb(this._value);
-  }
-};
-
-$Promise.prototype.catch = function (errorCb) {
-  this.then(null, errorCb);
-};
 
 module.exports = $Promise;
 /*-------------------------------------------------------
