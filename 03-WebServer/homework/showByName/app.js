@@ -1,12 +1,8 @@
 var fs = require("fs");
 var http = require("http");
 
-// Escribí acá tu servidor
-
 http
   .createServer(function (req, res) {
-    // console.log(req.url);
-    // logica
     if (req.url === "/") {
       res.writeHead(201, { "Content-Type": "application/json" });
 
@@ -23,18 +19,9 @@ http
           res.end(`${req.url} no arrojó resultados :( `);
         } else {
           res.writeHead(200);
-        //   console.log(lecturaImg);
           res.end(lecturaImg);
         }
       });
     }
   })
   .listen(3000, console.log("Running on PORT 3000"));
-
-
-
-
-
-
-
-
