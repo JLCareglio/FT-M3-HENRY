@@ -37,11 +37,42 @@ class $Promise {
   }
   _callHandlers() {
     while (this._handlerGroups.length > 0) {
-      const handle = this._handlerGroups.shift();
-      if (this._state === "fulfilled")
-        handle.successCb && handle.successCb(this._value);
-      if (this._state === "rejected")
-        handle.errorCb && handle.errorCb(this._value);
+      const handlers = this._handlerGroups.shift();
+      if (this._state === "fulfilled") {
+        if (!handlers.successCb)
+          handlers.downstreamPromise._internalResolve(this._value);
+        else {
+          try {
+            const resultado = handlers.successCb(this._value);
+            if (resultado instanceof $Promise)
+              resultado.then(
+                (value) => handlers.downstreamPromise._internalResolve(value),
+                (err) => handlers.downstreamPromise._internalReject(err)
+              );
+            else handlers.downstreamPromise._internalResolve(resultado);
+          } catch (error) {
+            handlers.downstreamPromise._internalReject(error);
+          }
+        }
+      }
+
+      if (this._state === "rejected") {
+        if (!handlers.errorCb)
+          handlers.downstreamPromise._internalReject(this._value);
+        else {
+          try {
+            const resultado = handlers.errorCb(this._value);
+            if (resultado instanceof $Promise)
+              resultado.then(
+                (value) => handlers.downstreamPromise._internalResolve(value),
+                (err) => handlers.downstreamPromise._internalReject(err)
+              );
+            else handlers.downstreamPromise._internalResolve(resultado);
+          } catch (error) {
+            handlers.downstreamPromise._internalReject(error);
+          }
+        }
+      }
     }
   }
   catch = (errorCb) => this.then(null, errorCb);
