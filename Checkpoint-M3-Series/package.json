@@ -1,0 +1,31 @@
+{
+  "name": "cp-m3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --detectOpenHandles",
+    "start": "nodemon index.js"
+  },
+  "author": "Henry",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "0.24.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "express": "^4.17.1",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6",
+    "supertest-as-promised": "^4.0.2"
+  },
+  "devDependencies": {
+    "standard": "^16.0.4"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}

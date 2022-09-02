@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "email": "martu@henryflix.com",
+      "name": "Martu",
+      "plan": "regular",
+      "watched": []
+    },
+    {
+      "email": "elena@henryflix.com",
+      "name": "Elena",
+      "plan": "regular",
+      "watched": []
+    }
+  ],
+
+  "series": [
+    {
+      "category": "regular",
+      "name": "The Office",
+      "seasons": 9,
+      "year": 2005,
+      "rating": 0,
+      "reviews": []
+
+    },
+    {
+      "category": "premium",
+      "name": "How I Met Your Mother",
+      "seasons": 9,
+      "year": 2005,
+      "rating": 0,
+      "reviews": []
+
+    },
+    {
+      "category": "regular",
+      "name": "The Big Bang Theory",
+      "seasons": 12,
+      "year": 2007,
+      "rating": 0,
+      "reviews": []
+    },
+    {
+      "category": "regular",
+      "name": "Seinfeld",
+      "seasons": 9,
+      "year": 1989,
+      "rating": 4,
+      "reviews": [
+        { "email": "martu@henryflix.com", "score": 4 },
+        { "email": "mora@henryflix.com", "score": 3 },
+        { "email": "wan@henryflix.com", "score": 5 }
+      ]
+    }
+  ]
+}

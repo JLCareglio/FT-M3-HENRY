@@ -1,0 +1,23 @@
+{
+  "name": "cp-m3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --detectOpenHandles",
+    "test:ci": "node ./.github/prepare.js && jest --verbose --detectOpenHandles --testResultsProcessor ./.github/reporter.js",
+    "test:old": "jest"
+  },
+  "author": "henry",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "express": "^4.17.1",
+    "jest": "^27.0.1",
+    "axios": "0.21.1"
+  },
+  "devDependencies": {
+    "supertest": "^6.1.3",
+    "supertest-as-promised": "^4.0.2"
+  }
+}
