@@ -1,0 +1,32 @@
+{
+  "name": "cp-m3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --detectOpenHandles",
+    "start": "nodemon index.js",
+    "test:01": "jest /tests/01.test.js",
+    "test:02": "jest /tests/02.test.js",
+    "test:03": "jest /tests/03.test.js",
+    "test:04": "jest /tests/04.test.js",
+    "test:05": "jest /tests/05.test.js",
+    "test:06": "jest /tests/06.test.js",
+    "test:07": "jest /tests/07.test.js",
+    "test:08": "jest /tests/08.test.js",
+    "test:09": "jest /tests/09.test.js"
+  },
+  "author": "Henry",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "0.24.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "express": "^4.17.1",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6",
+    "supertest-as-promised": "^4.0.2"
+  }
+}

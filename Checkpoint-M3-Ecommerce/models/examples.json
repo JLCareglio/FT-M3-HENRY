@@ -1,0 +1,31 @@
+{
+  "categories": ["Celulares", "Auriculares", "Parlantes", "Fundas"],
+
+  "products": [
+    {
+      "name": "iPhone 13 Pro",
+      "brand": "Apple",
+      "categoryId": 1,
+      "stock": 8,
+      "available": true,
+      "reviews": [
+        {
+          "stars": 5,
+          "text": "Me sirve",
+          "user": "Nahuel"
+        },
+        {
+          "stars": 4,
+          "text": "Buenaso",
+          "user": "Toni"
+        },
+        {
+          "stars": 3,
+          "text": "No me convence",
+          "user": "Mati"
+        }
+      ],
+      "rating": 4
+    }
+  ]
+}
