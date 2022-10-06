@@ -1,0 +1,24 @@
+{
+  "books": [
+    {
+    "id": "adhkj123adsh3s1gsfud22",
+    "name": "Harry Potter",
+    "author": "JK Rowling",
+    "stock": 3,
+    "available": true,
+    "rating": 3,
+    "admission": "2020-01-01T00:00:00.000Z",
+    "genre": "Fantasy"
+  },
+  {
+    "id": "adhkj901adsbbs1gsfud7a",
+    "name": "El Señor De Los Anillos",
+    "author": "J.R.R.Tolkien",
+    "stock": 1,
+    "available": true,
+    "rating": 5,
+    "admission": "2018-02-01T00:00:00.000Z",
+    "genre": "Adventure"
+  }
+]
+}
