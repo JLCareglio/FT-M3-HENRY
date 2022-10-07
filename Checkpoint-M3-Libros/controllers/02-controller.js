@@ -1,4 +1,4 @@
-const utils = require('../utils');
+const utils = require("../utils");
 /*
   2️⃣ ***EJERCICIO 2*** listBooks 2️⃣
     ❕ CONSIGNA ❕
@@ -9,13 +9,9 @@ const utils = require('../utils');
 */
 const listBooks = () => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
-  const books = utils.books
-  if(books.length > 0) {
-    return books
-  } else {
-    throw new Error("no hay libros en la base de datos")
-  }
-}
+  if (utils.books.length > 0) return utils.books;
+  else throw new Error("no hay libros en la base de datos");
+};
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = listBooks;

@@ -17,10 +17,26 @@ const utils = require("../utils");
     - Dentro del array de utils es donde debemos buscar nuestros libros
 
   */
-
 const findBook = (book) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
-  
+  if (typeof book == "number") throw "no se encontro el libro solicitado";
+
+  const { id, name, author, stock, available, rating, admission, genre } = book;
+  if (
+    id === undefined ||
+    name === undefined ||
+    author === undefined ||
+    stock === undefined ||
+    available === undefined ||
+    rating === undefined ||
+    admission === undefined ||
+    genre === undefined
+  )
+    throw "falta completar datos";
+
+  let ref = utils.books.find((b) => b.id === id);
+  book = ref;
+  return book;
 };
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️

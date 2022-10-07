@@ -1,10 +1,11 @@
-const utils = require('../utils');
+const { util } = require("chai");
+const utils = require("../utils");
 
 /// =========================================================================== ///
 /// =========================== 🛒 HENRY-BOOKS 🛒 ============================ ///
 /// =========================================================================== ///
 
-  /*
+/*
    1️⃣ ***EJERCICIO 1*** - addBook 1️⃣:
      ❕ CONSIGNA ❕
   1 - utils.books es nuestra "base de datos" improvisada y book es el libro que nos traen para vender,
@@ -16,11 +17,15 @@ const utils = require('../utils');
   - Pueden acceder a los libros a través de utils.books
   - Recordá que el mensaje de error deben ser exactamente como pide el enunciado
   - Encontrar una manera para extraer solo los id de la base de datos y de los libros que te dan por props en la función addBook.
-  */  
-  
-const addBook = (book) => {
-  
-}
+  */
+
+const addBook = (books) => {
+  books.forEach((book) => {
+    if (utils.books.find((b) => b.id === book.id))
+      throw "ya esta el libro en la base de datos.";
+    else utils.books.push(book);
+  });
+};
 // ⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = addBook;
 
