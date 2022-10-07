@@ -19,6 +19,8 @@ const utils = require("../utils");
   */
 const findBook = (book) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
+
+  // por algun motivo book puede ser un numero (no un id) en lugar de el object esperado
   if (typeof book == "number") throw "no se encontro el libro solicitado";
 
   const { id, name, author, stock, available, rating, admission, genre } = book;
@@ -35,7 +37,8 @@ const findBook = (book) => {
     throw "falta completar datos";
 
   let ref = utils.books.find((b) => b.id === id);
-  book = ref;
+  if (!ref) throw "no se encontro el libro solicitado";
+  else book = ref;
   return book;
 };
 

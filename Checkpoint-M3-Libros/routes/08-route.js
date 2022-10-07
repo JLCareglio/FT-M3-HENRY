@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const listBooks = require('../controllers/02-controller');
+const router = require("express").Router();
+const listBooks = require("../controllers/02-controller");
 // No modificar arriba de esta línea
 
 /*
@@ -8,10 +8,16 @@ const listBooks = require('../controllers/02-controller');
     1 - Integrar la función listBooks que desarrollaste previamente para obtener los libros.
     2 - Responder con los resultados encontrados
     📢 PUNTOS A TENER EN CUENTA 📢
-    - Si algo falla al traer las categorías, debes responder con un status code 400 y el mensaje del error!
+    - Si algo falla al traer las categorías, debes responder con un status code 400 y el mensaje del err!
 */
 
-// router.get('/books', (req, res) => {});
-  
+router.get("/books", (req, res) => {
+  try {
+    res.json(listBooks());
+  } catch (err) {
+    res.status(400).json({ err });
+  }
+});
+
 // No modificar nada debajo de esta línea
 module.exports = router;

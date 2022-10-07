@@ -13,7 +13,17 @@ const deleteBook = require("../controllers/04-controller");
     - Si algo falla al crear el producto, debes responder con un status code 400 con el mensaje del error!
 */
 
-// router.delete("/books", (req, res) => {});
+router.delete("/books", (req, res) => {
+  const id = req.body.id;
+  try {
+    deleteBook(id);
+    res.json({
+      message: `El libro con el id ${id} fue eliminado correctamente`,
+    });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
 
 // No modificar nada debajo de esta línea
 module.exports = router;

@@ -21,10 +21,12 @@ const takeBook = (id, quantity) => {
   if (!book) throw "Libro no encontrado";
   if (book.stock < quantity)
     throw "La cantidad de libros solicitados supera el stock";
-  const returnDate = new Date().toLocaleDateString();
+
+  const currentDate = new Date().toLocaleDateString();
+  book.stock -= quantity;
   return {
     book,
-    returnDate,
+    returnDate: currentDate,
   };
 };
 
