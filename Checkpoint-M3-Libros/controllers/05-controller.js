@@ -16,12 +16,11 @@ const utils = require("../utils");
   */
 const takeBook = (id, quantity) => {
   // ⚠️ No modificar nada arriba de esta línea ⚠️
-  if (quantity === 5) throw new Error("La cantidad solicitada supera el stock");
-  if (!quantity) throw new Error("Cantidad requerida");
+  if (!quantity) throw "Cantidad requerida";
   const book = utils.books.find((b) => b.id === id);
-  if (!book) throw new Error("Libro no encontrado");
+  if (!book) throw "Libro no encontrado";
   if (book.stock < quantity)
-    throw new Error("La cantidad de libros solicitados supera el stock");
+    throw "La cantidad de libros solicitados supera el stock";
   const returnDate = new Date().toLocaleDateString();
   return {
     book,
